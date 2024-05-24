@@ -17,11 +17,11 @@ It has the following features-
 ## Frontend
 </ul>
 <li>Frontend is created React (without any styles) </li>
-2 components are created </br>
+<li>2 components are created </li>
 -lets you create todos </br>
 -render todos </br>
 </ul>
-
+</br>
 <strong>Things to fix</strong> </br> 
 1. Infinite requests to get todos </br>
 2. Not yet implemented update todos </br>
