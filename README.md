@@ -7,16 +7,20 @@ It has the following features-
 -Anyone can see their existing todos
  
 ## Backend
-Database used is MongoDB </br>
-express is used to create routes </br>
-zod is used for data validation </br>
-mongoose is used for mongo connection
+<ul>
+<li>Database used is MongoDB </li>
+<li>express is used to create routes </li>
+<li>zod is used for data validation </li>
+<li>mongoose is used for mongo connection</li>
+</ul>
 
 ## Frontend
-Frontend is created React (without any styles) </br>
+</ul>
+<li>Frontend is created React (without any styles) </li>
 2 components are created </br>
 -lets you create todos </br>
 -render todos </br>
+</ul>
 
 <strong>Things to fix</strong> </br> 
 1. Infinite requests to get todos </br>
