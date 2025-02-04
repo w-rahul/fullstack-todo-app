@@ -59,7 +59,7 @@ app.put("/completed",async (req,res)=>{
      })
 })
 
-app.put("/newTodo", async(req,res) => {
+app.put("/editTodo", async(req,res) => {
     const updatePayload = req.body
     const Paresdupdated = updateTodo.safeParse(updatePayload)
     if(!Paresdupdated.success){
