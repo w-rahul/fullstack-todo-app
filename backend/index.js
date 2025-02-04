@@ -3,8 +3,10 @@ const { createTodo, updateTodo } = require("./type")
 const { todo } = require("./db")
 require('dotenv').config()
 const cors = require("cors")
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 6000
 const app = express() 
+
+console.log(process.env);
 
 app.use(express.json())
 app.use(cors())
@@ -42,19 +44,40 @@ app.put("/completed",async (req,res)=>{
     const Paresdupdated = updateTodo.safeParse(updatePayload)
     if(!Paresdupdated.success){
         res.status(411).json({
-            mssg : "You sent the wrong inputs"
+            msg : "You sent the wrong inputs"
         })
         return 
     }
 
-    await todo.update({
+    await todo.updateOne({
         _id: req.body.id
     },{
-        compledted: true
+        completed: true
     })
      res.json({
-        mssg: "Todo is mark as completed"
+        msg: "Todo is mark as completed"
      })
+})
+
+app.put("/newTodo", async(req,res) => {
+    const updatePayload = req.body
+    const Paresdupdated = updateTodo.safeParse(updatePayload)
+    if(!Paresdupdated.success){
+        res.status(411).json({
+            msg : "You sended a worng input"
+        })
+        return 
+    }
+
+    await todo.updateOne({
+        _id: req.body.id
+    },{
+        title: updatePayload.title,
+        description:  updatePayload.description,
+    })
+    res.json({
+        "msg": "new todos is updated"
+    })
 })
 
 app.use((err,req,res,next)=>{
@@ -63,4 +86,6 @@ app.use((err,req,res,next)=>{
     })
 })
 
-app.listen(PORT)
+app.listen(PORT, () => {
+    console.log("Port is running at 3000");
+})
