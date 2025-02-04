@@ -16,6 +16,7 @@ app.post("/create",async (req,res)=>{
         res.status(411).json({
             message: "You sent the wrong inputs"
         })
+
         return 
     }
     // put it in mongodb
@@ -53,7 +54,7 @@ app.put("/completed",async (req,res)=>{
         completed: true
     })
      res.json({
-        message: "Todo is mark as completed"
+        message: "Todo is marked as completed"
      })
 })
 
@@ -62,7 +63,7 @@ app.put("/Update-todo", async(req,res) => {
     const Paresdupdated = updateTodo.safeParse(updatePayload)
     if(!Paresdupdated.success){
         res.status(411).json({
-            message: "You sent the worng input"
+            message: "You sent the wrong input"
         })
         return 
     }
