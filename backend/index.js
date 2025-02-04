@@ -6,8 +6,6 @@ const cors = require("cors")
 const PORT = process.env.PORT || 6000
 const app = express() 
 
-console.log(process.env);
-
 app.use(express.json())
 app.use(cors())
 
@@ -16,8 +14,9 @@ app.post("/create",async (req,res)=>{
     const parsedPayload = createTodo.safeParse(createPayload)
     if(!parsedPayload.success){
         res.status(411).json({
-            mssg : "You sent the wrong inputs"
+            message: "You sent the wrong inputs"
         })
+
         return 
     }
     // put it in mongodb
@@ -28,7 +27,7 @@ app.post("/create",async (req,res)=>{
     })
 
     res.json({
-        mssg: "Todo created"
+        message: "Todo created"
     })
 })
 
@@ -44,7 +43,7 @@ app.put("/completed",async (req,res)=>{
     const Paresdupdated = updateTodo.safeParse(updatePayload)
     if(!Paresdupdated.success){
         res.status(411).json({
-            msg : "You sent the wrong inputs"
+            message: "You sent the wrong inputs"
         })
         return 
     }
@@ -55,16 +54,16 @@ app.put("/completed",async (req,res)=>{
         completed: true
     })
      res.json({
-        msg: "Todo is mark as completed"
+        message: "Todo is marked as completed"
      })
 })
 
-app.put("/editTodo", async(req,res) => {
+app.put("/update-todo", async(req,res) => {
     const updatePayload = req.body
     const Paresdupdated = updateTodo.safeParse(updatePayload)
     if(!Paresdupdated.success){
         res.status(411).json({
-            msg : "You sended a worng input"
+            message: "You sent the wrong input"
         })
         return 
     }
@@ -76,7 +75,7 @@ app.put("/editTodo", async(req,res) => {
         description:  updatePayload.description,
     })
     res.json({
-        "msg": "new todos is updated"
+        message: "new todo is updated"
     })
 })
 
