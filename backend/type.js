@@ -15,8 +15,20 @@ const updateNewTodo = zod.object({
     description: zod.string()
 })
 
+const userTodo = zod.object({
+    username: zod.string(),
+    mobileNumber: zod.string(),
+    userEmail: zod.string().email()
+})
+
+const updateUserTodo = zod.object({
+    mobileNumber: zod.string()
+})
+
 module.exports = {
     createTodo : createTodo,
     updateTodo : updateTodo,
-    updateNewTodo : updateNewTodo
+    updateNewTodo : updateNewTodo,
+    userTodo : userTodo,
+    updateUserTodo : updateUserTodo
 }
